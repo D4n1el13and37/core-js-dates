@@ -213,15 +213,19 @@ function getNextFridayThe13th(date) {
   const SEARCHEDDATE = 13;
   const year = date.getFullYear();
   let currentMonth = date.getMonth();
+  let currentDate = new Date(year, currentMonth, SEARCHEDDATE);
+  let length = 199;
 
-  while (true) {
-    const currentDate = new Date(year, currentMonth, SEARCHEDDATE);
+  while (length) {
+    currentDate = new Date(year, currentMonth, SEARCHEDDATE);
     const isFriday = currentDate.getDay() === FRIDAY;
     if (isFriday) {
       return currentDate;
     }
     currentMonth += 1;
+    length -= 1;
   }
+  return currentDate;
 }
 
 /**
